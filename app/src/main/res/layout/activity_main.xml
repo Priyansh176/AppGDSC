@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/colorBg"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/baloo_paaji"
+        android:text="DOB To Days"
+        android:textColor="@color/green"
+        android:textSize="35sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textAlignment="center"
+        android:text="Enter your date of birth"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:padding="7sp"
+            android:textAlignment="center"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/black"
+            android:background="@drawable/bg_gray"
+            android:hint="date"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:padding="7sp"
+            android:textAlignment="center"
+            android:layout_marginRight="5dp"
+            android:textColor="@color/black"
+            android:background="@drawable/bg_gray"
+            android:hint="month"
+            android:inputType="number"/>
+
+        <EditText
+            android:id="@+id/year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="7sp"
+            android:textSize="15sp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:background="@drawable/bg_gray"
+            android:hint="year"
+            android:inputType="number"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Enter the current date"
+        android:textAlignment="center"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/red"
+        android:textSize="17sp" />
+
+    <CalendarView
+        android:id="@+id/calender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:weekDayTextAppearance="@color/black"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:background="@drawable/bg_green"
+        android:padding="7sp"
+        android:fontFamily="@font/baloo_paaji"/>
+
+    <TextView
+        android:id="@+id/days"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Days you lived-"
+        android:layout_marginTop="10dp"
+        android:textSize="25sp"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/baloo_paaji"/>
+
+</LinearLayout>
