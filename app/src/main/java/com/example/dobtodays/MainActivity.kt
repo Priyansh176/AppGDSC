@@ -26,38 +26,51 @@ class MainActivity : AppCompatActivity() {
         var calenderDate = findViewById<CalendarView>(R.id.calender)
 
         calenderDate.setOnDateChangeListener(
-                OnDateChangeListener{ view, year, month, dayOfMonth ->
+                OnDateChangeListener{ _, year, month, dayOfMonth ->
                     var currentDate:Int = dayOfMonth
                     var currentMonth:Int = month + 1
                     var currentYear:Int = year
 
 
                     btnStart.setOnClickListener{
-
-                        val day1 = Integer.parseInt(dateOfBirth.text.toString())
-                        val month1 = Integer.parseInt(monthOfBirth.text.toString())
-                        val year1 = Integer.parseInt(yearOfBirth.text.toString())
-
-                        val day2 = currentDate
-                        val month2 = currentMonth
-                        val year2 = currentYear
-
-
-                        val daysInYear = intArrayOf(0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
-
-                        fun isLeapYear(year: Int): Boolean {
-                            return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)
+                        if(dateOfBirth.text.toString()=="" || dateOfBirth.text == null){
+                            dateOfBirth.error = "Required"
+                        }
+                        else if(monthOfBirth.text.toString()=="" || monthOfBirth.text == null){
+                            monthOfBirth.error = "Required"
+                        }
+                        else if(yearOfBirth.text.toString()=="" || yearOfBirth.text == null){
+                            yearOfBirth.error = "Required"
                         }
 
-                        val totalDays1 = day1 + daysInYear.take(month1).sum() + (year1 - 1) * 365 + (1 until year1).count(::isLeapYear)
-                        val totalDays2 = day2 + daysInYear.take(month2).sum() + (year2 - 1) * 365 + (1 until year2).count(::isLeapYear)
+                        else {
+                            val day1 = Integer.parseInt(dateOfBirth.text.toString())
+                            val month1 = Integer.parseInt(monthOfBirth.text.toString())
+                            val year1 = Integer.parseInt(yearOfBirth.text.toString())
 
-                        val numDays = Math.abs(totalDays2 - totalDays1)
+                            val day2 = currentDate
+                            val month2 = currentMonth
+                            val year2 = currentYear
 
-                        var days = findViewById<TextView>(R.id.days)
 
-                        days.text = "Days you lived- $numDays"
+                            val daysInYear =
+                                intArrayOf(0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
 
+                            fun isLeapYear(year: Int): Boolean {
+                                return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)
+                            }
+
+                            val totalDays1 = day1 + daysInYear.take(month1)
+                                .sum() + (year1 - 1) * 365 + (1 until year1).count(::isLeapYear)
+                            val totalDays2 = day2 + daysInYear.take(month2)
+                                .sum() + (year2 - 1) * 365 + (1 until year2).count(::isLeapYear)
+
+                            val numDays = Math.abs(totalDays2 - totalDays1)
+
+                            var days = findViewById<TextView>(R.id.days)
+
+                            days.text = "Days you lived- $numDays"
+                        }
                     }
                 }
             )
